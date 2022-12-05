@@ -6,6 +6,8 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import './Home.css'
 import ImageGallery from '../image-gallery/ImageGallery'
+import VideoGallery from '../video-gallery/VideoGallery'
+
 
 
 function TabPanel(props) {
@@ -50,26 +52,9 @@ function TabPanel(props) {
 
     return (
       <Box sx={{ width: '100%' }}>
-        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-          <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-            <Tab label="Latest Uploads" {...a11yProps(0)} />
-            <Tab label="Last Week" {...a11yProps(1)} />
-            <Tab label="All Time" {...a11yProps(2)} />
-            <Tab label="Trending" {...a11yProps(3)} />
-          </Tabs>
-        </Box>
-        <TabPanel value={value} index={0}>
-          Item One
-        </TabPanel>
-        <TabPanel value={value} index={1}>
-          Item Two
-        </TabPanel>
-        <TabPanel value={value} index={2}>
-          Item Three
-        </TabPanel>
-        <TabPanel value={value} index={3}>
-          Item Four
-        </TabPanel>
+
+          <ImageGallery />
+          <VideoGallery />
       </Box>
     );
   }
