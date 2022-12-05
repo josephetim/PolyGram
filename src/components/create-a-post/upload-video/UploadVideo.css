@@ -1,0 +1,50 @@
+.root-upload-video {
+    flex-grow: 1;
+    min-height: 80vh;
+    padding-top: 5rem;
+    padding-bottom: 4rem;
+    text-align: center;
+    width: 500px;
+}
+
+.pet {
+    text-align: center;
+}
+
+.input {
+    display: 'none';
+}
+
+.form-container {
+    border: 1px solid #0000003d;
+}
+
+form {
+    padding: 1rem;
+}
+
+.img-preview {
+    width: 350px;
+    padding-bottom: 1rem;
+}
+
+.text-field {
+    padding-bottom: 1rem;
+}
+.upload-video-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20vh;
+}
+.upload-card {
+    display: flex;
+    flex-direction: row;
+    height: 50vh;
+    align-items: center;
+    justify-content: center;
+}
+#flex {
+    display: flex;
+    width: 100%;
+    font-size: 70px;
+}
