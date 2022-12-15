@@ -1,5 +1,5 @@
 
-const placeholderAssets = [
+const placeholderImageAssets = [
     {
         image: '/more-images/1.jpg',
         name: "Waterfall",
@@ -73,4 +73,4 @@ const placeholderAssets = [
         cid: "12"
     }
 ]
-export default placeholderAssets
+export default placeholderImageAssets
