@@ -13,6 +13,8 @@ import Box from '@mui/material/Box';
 import { apiKey } from '../../../APIKEYS'
 import { Link } from 'react-router-dom'
 import './ImageGallery.css'
+import placeholderAssets from '../assets/Imageassets'
+
 
 
 
@@ -112,6 +114,7 @@ export default function ImageGallery() {
         </Tabs>
       </Box>
       {
+
   loading ? (
     <CircularStatic />
   ) : (
@@ -134,7 +137,7 @@ export default function ImageGallery() {
                         variant="contained"
                         size="small"
                         component={Link}
-                        to={`/pet-details/${nftImage.cid}`}
+                        to={`/image-details/${nftImage.cid}`}
                         className="view-btn"
                       >
                         View
@@ -146,7 +149,36 @@ export default function ImageGallery() {
             </Grid>
           ))
         ) : (
-          <h2 style={{marginLeft: "20px"}}>No Image Yet...</h2>
+          // <h2 style={{marginLeft: "20px"}}>No Image Yet...</h2>
+          placeholderAssets.map((nftImage, index) => (
+            <Grid item xs={6} sm={3} key={index}>
+              <ImageListItem style={{ height: '450px', listStyle: 'none' }}>
+                <img src={nftImage.image} alt={nftImage.name} />
+                <ImageListItemBar
+                  title={nftImage.name}
+                  subtitle={<span>by: {nftImage.description}</span>}
+                  actionIcon={
+                    <IconButton
+                      aria-label={`info about ${nftImage.name}`}
+                      className="icon"
+                    >
+                      <Button
+                        variant="contained"
+                        size="small"
+                        component={Link}
+                        to={`/image-details/${nftImage.cid}`}
+                        className="view-btn"
+                      >
+                        View
+                      </Button>
+                    </IconButton>
+                  }
+                />
+              </ImageListItem>
+            </Grid>
+          )
+          )
+
         )}
       </Grid>
     </div>

@@ -13,6 +13,7 @@ import Box from '@mui/material/Box';
 import { apiKey } from '../../../APIKEYS'
 import { Link } from 'react-router-dom'
 import './VideoGallery.css'
+import placeholderVideoAssets from '../assets/VideoAssets'
 
 
 
@@ -121,7 +122,11 @@ export default function VideoGallery() {
           videoData.map((nftVideo, index) => (
             <Grid item xs={6} sm={3} key={index}>
               <ImageListItem style={{ height: '450px', listStyle: 'none' }}>
-                <img src={nftVideo.video} alt={nftVideo.name} />
+              <video width="320" height="400" controls>
+                <source src={nftVideo.video}  type="video/mp4"/>
+                <source src={nftVideo.video} type="video/ogg"/>
+                Your browser does not support the video tag.
+              </video>
                 <ImageListItemBar
                   title={nftVideo.name}
                   subtitle={<span>by: {nftVideo.description}</span>}
@@ -134,7 +139,7 @@ export default function VideoGallery() {
                         variant="contained"
                         size="small"
                         component={Link}
-                        to={`/pet-details/${nftVideo.cid}`}
+                        to={`/video-details/${nftVideo.cid}`}
                         className="view-btn"
                       >
                         View
@@ -146,7 +151,39 @@ export default function VideoGallery() {
             </Grid>
           ))
         ) : (
-          <h2 style={{marginLeft: "20px"}}>No Video Yet...</h2>
+          // <h2 style={{marginLeft: "20px"}}>No Video Yet...</h2>
+          placeholderVideoAssets.map((nftVideo, index) => (
+            <Grid item xs={6} sm={3} key={index}>
+              <ImageListItem style={{ height: '450px', listStyle: 'none' }}>
+              <video width="320" height="400" controls>
+                <source src={nftVideo.video}  type="video/mp4"/>
+                <source src={nftVideo.video} type="video/ogg"/>
+                Your browser does not support the video tag.
+              </video>
+                <ImageListItemBar
+                  title={nftVideo.name}
+                  subtitle={<span>by: {nftVideo.description}</span>}
+                  actionIcon={
+                    <IconButton
+                      aria-label={`info about ${nftVideo.name}`}
+                      className="icon"
+                    >
+                      <Button
+                        variant="contained"
+                        size="small"
+                        component={Link}
+                        to={`/image-details/${nftVideo.cid}`}
+                        className="view-btn"
+                      >
+                        View
+                      </Button>
+                    </IconButton>
+                  }
+                />
+              </ImageListItem>
+            </Grid>
+          )
+          )
         )}
       </Grid>
     </div>
