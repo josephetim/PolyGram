@@ -3,7 +3,7 @@ import { useParams } from 'react-router'
 import FavoriteIcon from '@material-ui/icons/Favorite'
 import ShareIcon from '@material-ui/icons/Share'
 import { apiKey } from '../../../APIKEYS'
-
+import placeholderImageAssets from '../assets/Imageassets'
 import {
   TextField,
   List,
@@ -37,14 +37,10 @@ function ImageDetails({ account, contractData }) {
   useEffect(() => {
     if (imageId) {
       const getMetadata = async () => {
-        let data = await fetch(`https://ipfs.io/ipfs/${imageId}/metadata.json`)
-        data = await data.json()
-        const [imageOwnerName, imageCategory] = data.description.split(',')
-        const imageFormated = getImage(data.image)
-        setImage(imageFormated)
-        setImageName(data.name)
-        setImageOwnerName(imageOwnerName)
-        setImageCategory(imageCategory)
+          setImage(placeholderImageAssets[parseInt(imageId)-1].image)
+          setImageName(placeholderImageAssets[parseInt(imageId)].name)
+          setImageOwnerName(placeholderImageAssets[parseInt(imageId)].description)
+          setImageCategory(placeholderImageAssets[parseInt(imageId)].name)
       }
       getMetadata()
       getImage()
@@ -93,14 +89,6 @@ const handleSubmit = (event) => {
             <Grid item xs={12} sm={6} className="grid-container">
               <div className="flex-container">
   <h2>{`${imageName} the ${imageCategory}`}</h2>
-  <Button
-    variant="contained"
-    className="wallet-btn"
-    color="primary"
-    onClick={mintNFT}
-  >
-    Mint NFT
-  </Button>
 </div>
 
 <img className="img" src={image} alt="pet" />
