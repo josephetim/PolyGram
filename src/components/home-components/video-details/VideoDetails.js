@@ -3,6 +3,7 @@ import { useParams } from 'react-router'
 import FavoriteIcon from '@material-ui/icons/Favorite'
 import ShareIcon from '@material-ui/icons/Share'
 import { apiKey } from '../../../APIKEYS'
+import placeholderVideoAssets from '../assets/VideoAssets'
 
 import {
   TextField,
@@ -37,14 +38,10 @@ function ImageDetails({ account, contractData }) {
   useEffect(() => {
     if (videoId) {
       const getMetadata = async () => {
-        let data = await fetch(`https://ipfs.io/ipfs/${videoId}/metadata.json`)
-        data = await data.json()
-        const [videoOwnerName, videoCategory] = data.description.split(',')
-        const videoFormated = getVideo(data.video)
-        setVideo(videoFormated)
-        setVideoName(data.name)
-        setVideoOwnerName(videoOwnerName)
-        setVideoCategory(videoCategory)
+        setVideo(placeholderVideoAssets[parseInt(videoId)-1].video)
+        setVideoName(placeholderVideoAssets[parseInt(videoId)-1].name)
+        setVideoOwnerName(placeholderVideoAssets[parseInt(videoId)-1].description)
+        setVideoCategory(placeholderVideoAssets[parseInt(videoId)-1].name)
       }
       getMetadata()
       getVideo()
@@ -93,17 +90,14 @@ const handleSubmit = (event) => {
             <Grid item xs={12} sm={6} className="grid-container">
               <div className="flex-container">
   <h2>{`${videoName} the ${videoCategory}`}</h2>
-  <Button
-    variant="contained"
-    className="wallet-btn"
-    color="primary"
-    onClick={mintNFT}
-  >
-    Mint NFT
-  </Button>
+
 </div>
 
-<img className="img" src={video} alt="pet" />
+<video width="320" height="400" controls>
+                <source src={video}  type="video/mp4"/>
+                <source src={video} type="video/ogg"/>
+                Your browser does not support the video tag.
+              </video>
 <div className="flex-container">
   <div>
     <IconButton aria-label="add to favorites">

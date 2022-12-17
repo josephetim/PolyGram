@@ -38,9 +38,9 @@ function ImageDetails({ account, contractData }) {
     if (imageId) {
       const getMetadata = async () => {
           setImage(placeholderImageAssets[parseInt(imageId)-1].image)
-          setImageName(placeholderImageAssets[parseInt(imageId)].name)
-          setImageOwnerName(placeholderImageAssets[parseInt(imageId)].description)
-          setImageCategory(placeholderImageAssets[parseInt(imageId)].name)
+          setImageName(placeholderImageAssets[parseInt(imageId)-1].name)
+          setImageOwnerName(placeholderImageAssets[parseInt(imageId)-1].description)
+          setImageCategory(placeholderImageAssets[parseInt(imageId)-1].name)
       }
       getMetadata()
       getImage()
@@ -91,7 +91,7 @@ const handleSubmit = (event) => {
   <h2>{`${imageName} the ${imageCategory}`}</h2>
 </div>
 
-<img className="img" src={image} alt="pet" />
+<img className="img" src={image} alt="image" />
 <div className="flex-container">
   <div>
     <IconButton aria-label="add to favorites">

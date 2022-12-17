@@ -172,7 +172,7 @@ export default function VideoGallery() {
                         variant="contained"
                         size="small"
                         component={Link}
-                        to={`/image-details/${nftVideo.cid}`}
+                        to={`/video-details/${nftVideo.cid}`}
                         className="view-btn"
                       >
                         View
